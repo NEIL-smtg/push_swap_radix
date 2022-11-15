@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 20:01:07 by suchua            #+#    #+#             */
-/*   Updated: 2022/11/14 01:58:23 by suchua           ###   ########.fr       */
+/*   Updated: 2022/11/15 14:46:25 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	check_range(long num)
-{
-	return (num >= -2147483648 && num <= 2147483647);
-}
 
 long	ft_atol(char *str)
 {
@@ -40,8 +35,5 @@ long	ft_atol(char *str)
 		total = total * 10 + str[i] - '0';
 		i++;
 	}
-	if (check_range(total * sign))
-		return (total * sign);
-	else
-		exit_now();
+	return (total * sign);
 }

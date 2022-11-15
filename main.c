@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:25:12 by suchua            #+#    #+#             */
-/*   Updated: 2022/11/14 02:23:04 by suchua           ###   ########.fr       */
+/*   Updated: 2022/11/15 18:56:29 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ int	main(int ac, char **av)
 		ft_clear_stack(&stack_b);
 	}
 	else
-		write(2, "Error\n", 6);
+		exit_now();
 	return (0);
 }

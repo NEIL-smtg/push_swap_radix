@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 01:39:38 by suchua            #+#    #+#             */
-/*   Updated: 2022/11/14 01:39:38 by suchua           ###   ########.fr       */
+/*   Updated: 2022/11/15 14:42:09 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	find_min(int first, int second, int third)
 {
 	if (first < second && first < third)
 		return (1);
-	if (second < first && second < third)
+	else if (second < first && second < third)
 		return (2);
-	if (third < first && third < second)
+	else
 		return (3);
 }
 

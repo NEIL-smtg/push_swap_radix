@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:49:49 by suchua            #+#    #+#             */
-/*   Updated: 2022/11/14 02:15:27 by suchua           ###   ########.fr       */
+/*   Updated: 2022/11/15 14:48:53 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ typedef struct s_stack
 }	t_stack;
 
 //exit
-void	exit_now();
+void	exit_now(void);
 
 //valid arguments
 t_stack	*ft_check_valid(char *av);
 int		ft_is_nb(char *s);
 long	ft_atol(char *str);
-int	ft_is_sign(char c);
-int	ft_is_nb(char *s);
+int		ft_is_sign(char c);
+int		ft_is_nb(char *s);
 
 //stack
+void	init_stack(t_stack *s);
 t_stack	*ft_newstack(int data);
 t_stack	*get_last_elem(t_stack *stack);
 int		get_stack_size(t_stack *stack);
@@ -57,6 +58,9 @@ void	rrb(t_stack **b, int print);
 void	rrr(t_stack **a, t_stack **b);
 
 //sort
+void	ft_sort(t_stack **a, t_stack **b);
+
+//sort3
 void	ft_sort3(t_stack **s, int type);
 
 #endif
