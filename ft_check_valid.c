@@ -53,10 +53,9 @@ t_stack	*more_than_2av(char **av)
 	while (av[++i])
 	{
 		num = ft_atol(av[i]);
-		if (ft_is_nb(av[i]) && check_range(num) && !check_dup(&s, num))
-			stack_add_back(&s, ft_newstack(num));
-		else
+		if (!ft_is_nb(av[i]) || !check_range(num) || check_dup(&s, num))
 			exit_now();
+		stack_add_back(&s, ft_newstack(num));
 	}
 	return (s);
 }
@@ -64,7 +63,7 @@ t_stack	*more_than_2av(char **av)
 t_stack	*ft_check_valid(int ac, char **av)
 {
 	int		i;
-	int		num;
+	long	num;
 	t_stack	*s;
 
 	i = 0;
@@ -75,11 +74,10 @@ t_stack	*ft_check_valid(int ac, char **av)
 	{
 		if (ft_is_nb(&av[1][i]))
 		{
-			if (!check_range(ft_atol(&av[1][i])))
-				exit_now();
 			num = ft_atol(&av[1][i]);
-			if (!check_dup(&s, num))
-				stack_add_back(&s, ft_newstack(num));
+			if (!check_range(num) || check_dup(&s, num))
+				exit_now();
+			stack_add_back(&s, ft_newstack(num));
 			while (ft_is_nb(&av[1][i]))
 				i++;
 		}

@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		stack_a = ft_check_valid(ac, av);
-		//ft_sort(&stack_a, &stack_b);
+		ft_sort(&stack_a, &stack_b);
 		print_stack(stack_a, stack_b);
 		ft_clear_stack(&stack_a);
 		ft_clear_stack(&stack_b);

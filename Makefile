@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC			= main.c utils.c rotate.c sasbpapb.c reverse_rotate.c ft_sort.c ft_sort3.c \
+SRC			= main.c utils.c op_rotate.c op_swap_push.c op_reverse_rotate.c ft_sort.c ft_sort3.c \
 			  ft_atol.c ft_check_valid.c ft_stack.c ft_stack2.c
 LIBFT_DIR	= Libft
 LIBFT		= libft.a
