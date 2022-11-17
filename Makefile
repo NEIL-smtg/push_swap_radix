@@ -45,3 +45,11 @@ fclean: clean
 	@echo "removed .o .a files"
 
 re : fclean all
+
+run:
+	@gcc *.c Libft/libft.a -o sort
+	@echo "sort created"
+
+runfs:
+	@gcc -Wall -Werror -Wextra -fsanitize=address -g *.c Libft/libft.a -o sort
+	@echo "sort created"
