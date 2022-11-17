@@ -38,28 +38,24 @@ void	ft_handle_r(t_stack **s, int type)
 
 void	ft_sort3(t_stack **s, int type)
 {
+	t_stack	*first;
 	t_stack	*sec;
 	t_stack	*third;
 	int		stk_size;
 
 	stk_size = get_stack_size(*s);
-	sec = (*s)->next;
-	if (stk_size == 3)
-		third = sec->next;
-	if ((*s)->data > sec->data && stk_size == 2)
-		ft_handle_swap(s, type);
-	if (stk_size == 2)
-		return ;
 	while (!check_sort(s))
 	{
-		if ((*s)->data > sec->data && (*s)->data > third->data)
+		first = *s;
+		sec = first->next;
+		if (stk_size == 3)
+			third = sec->next;
+		if (third && first->data > sec->data && first->data > third->data)
 			ft_handle_r(s, type);
-		if ((*s)->data > sec->data)
+		else if (first->data > sec->data)
 			ft_handle_swap(s, type);
-		print_stack(*s, NULL);
-		break;
-		// else
-		// 	ft_handle_rr(s, type);
+		else
+			ft_handle_rr(s, type);
 	}
 }
 

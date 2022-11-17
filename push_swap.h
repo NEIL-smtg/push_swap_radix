@@ -32,7 +32,7 @@ void	print_stack(t_stack *a, t_stack *b);
 void	exit_now(void);
 
 //valid arguments
-t_stack	*ft_check_valid(char *av);
+t_stack	*ft_check_valid(int ac, char **av);
 int		ft_is_nb(char *s);
 long	ft_atol(char *str);
 int		ft_is_sign(char c);

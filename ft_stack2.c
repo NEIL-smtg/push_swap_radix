@@ -30,9 +30,14 @@ void	stack_add_front(t_stack **s, t_stack *add)
 
 void	stack_add_back(t_stack **s, t_stack *new)
 {
+	t_stack	*last;
+
 	new->next = NULL;
 	if (!s || !*s)
 		*s = new;
 	else
-		get_last_elem(*s)->next = new;
+	{
+		last = get_last_elem(*s);
+		last->next = new;
+	}
 }
