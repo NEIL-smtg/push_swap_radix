@@ -65,5 +65,7 @@ t_stack	*ft_check_valid(char *av)
 		else
 			i++;
 	}
+	if (!s->next)
+		exit_now();
 	return (s);
 }

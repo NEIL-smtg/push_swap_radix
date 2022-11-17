@@ -16,6 +16,11 @@ LIBFT_DIR	= Libft
 LIBFT		= libft.a
 OBJS		= $(SRC:.c=.o)
 NAME		= push_swap.a
+GCC			= gcc
+CFLAGS		= -Wall -Werror -Wextra
+
+.c.o:
+	$(GCC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 

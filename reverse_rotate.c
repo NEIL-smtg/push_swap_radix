@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:07:31 by suchua            #+#    #+#             */
-/*   Updated: 2022/11/11 18:51:59 by suchua           ###   ########.fr       */
+/*   Updated: 2022/11/17 00:06:30 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	rra(t_stack **a, int print)
 {
-	t_stack	*new_first;
 	t_stack	*tmp;
 	int		size;
 
@@ -35,7 +34,6 @@ void	rra(t_stack **a, int print)
 
 void	rrb(t_stack **b, int print)
 {
-	t_stack	*new_first;
 	t_stack	*tmp;
 	int		size;
 

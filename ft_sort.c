@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+int	check_sort(t_stack **s)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+
+	tmp1 = *s;
+	while (tmp1)
+	{
+		tmp2 = tmp1->next;
+		while (tmp2)
+		{
+			if (tmp1->data > tmp2->data)
+				return (0);
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+	return (1);
+}
+
 void	first_random_push(t_stack **a, t_stack **b)
 {
 	pb(a, b);
@@ -25,7 +45,7 @@ void	start_sorting(t_stack **a, t_stack **b)
 
 void	ft_sort(t_stack **a, t_stack **b)
 {
-	if (get_stack_size(*a) == 3)
+	if (get_stack_size(*a) <= 3)
 		ft_sort3(a, TYPE_A);
 	else
 		start_sorting(a, b);

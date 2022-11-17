@@ -6,7 +6,7 @@
 #    By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 12:01:03 by suchua            #+#    #+#              #
-#    Updated: 2022/11/08 23:08:16 by suchua           ###   ########.fr        #
+#    Updated: 2022/11/17 00:08:22 by suchua           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,9 @@ OBJS    	=    ${SRC:.c=.o}
 NAME    	=    libft.a
 CFLAGS  	=    -Wall -Wextra -Werror
 GCC     	=    gcc
+
+.c.o:
+	$(GCC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 

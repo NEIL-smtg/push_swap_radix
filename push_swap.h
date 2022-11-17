@@ -25,6 +25,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+//remove
+void	print_stack(t_stack *a, t_stack *b);
+
 //exit
 void	exit_now(void);
 
@@ -59,6 +62,7 @@ void	rrr(t_stack **a, t_stack **b);
 
 //sort
 void	ft_sort(t_stack **a, t_stack **b);
+int		check_sort(t_stack **s);
 
 //sort3
 void	ft_sort3(t_stack **s, int type);
