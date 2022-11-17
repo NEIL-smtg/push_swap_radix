@@ -18,6 +18,8 @@ OBJS		= $(SRC:.c=.o)
 NAME		= push_swap.a
 GCC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
+RED          := $(shell tput -Txterm setaf 1)
+RESET 		 := $(shell tput -Txterm sgr0)
 
 .c.o:
 	$(GCC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -48,8 +50,8 @@ re : fclean all
 
 run:
 	@gcc *.c Libft/libft.a -o sort
-	@echo "sort created"
+	@echo "$(RED)sort created"
 
 runfs:
 	@gcc -Wall -Werror -Wextra -fsanitize=address -g *.c Libft/libft.a -o sort
-	@echo "sort created"
+	@echo "$(RED)fsanitize sort created"
