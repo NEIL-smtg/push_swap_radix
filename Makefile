@@ -10,28 +10,33 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC			= main.c utils.c op_rotate.c op_swap_push.c op_reverse_rotate.c ft_sort.c ft_sort3.c \
-			  ft_atol.c ft_check_valid.c ft_stack.c ft_stack2.c
-LIBFT_DIR	= Libft
+SRC_FILES	= main utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
+			  ft_atol ft_check_valid ft_stack ft_stack2 ft_sort5
+LIBFT_DIR	= Libft/
 LIBFT		= libft.a
-OBJS		= $(SRC:.c=.o)
+OBJS_DIR	= objs/
 NAME		= push_swap.a
-GCC			= gcc
+CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
-RED          := $(shell tput -Txterm setaf 1)
-RESET 		 := $(shell tput -Txterm sgr0)
+RED			:= $(shell tput -Txterm setaf 1)
+RESET		:= $(shell tput -Txterm sgr0)
+SRC			= $(addsuffix .c, $(SRC_FILES))
+OBJS		= $(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-.c.o:
-	$(GCC) $(CFLAGS) -c $< -o $(<:.c=.o)
+all: $(LIBFT_DIR)$(LIBFT)
+	mkdir -p $(OBJS_DIR)
+	make $(NAME)
 
-all: $(NAME)
+$(OBJS_DIR)%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME) : $(LIBFT_DIR)/$(LIBFT) $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
-	cp $(LIBFT_DIR)/$(LIBFT) .
+$(NAME): $(OBJS)
+	touch $(NAME)
+	cp $(LIBFT_DIR)$(LIBFT) .
 	mv $(LIBFT) $(NAME)
+	ar -crs $(NAME) $(OBJS)
 
-$(LIBFT_DIR)/$(LIBFT):
+$(LIBFT_DIR)$(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 norm:
@@ -40,18 +45,28 @@ norm:
 clean:
 	rm -rf $(OBJS)
 
+# cd $(LIBFT_DIR) && $(MAKE) fclean
 fclean: clean
+	rm -rf $(OBJS_DIR)
 	rm -rf $(NAME)
-	cd $(LIBFT_DIR) && $(MAKE) fclean
 	clear
 	@echo "removed .o .a files"
 
 re : fclean all
 
 run:
-	@gcc *.c Libft/libft.a -o sort
+	make
+	clear
+	@gcc main.c $(NAME) -o sort
+	@echo "$(RED)sort created"
+
+runlib:
+	@gcc main.c $(NAME) $(LIBFT) -o sort
 	@echo "$(RED)sort created"
 
 runfs:
-	@gcc -Wall -Werror -Wextra -fsanitize=address -g *.c Libft/libft.a -o sort
+	@gcc -Wall -Werror -Wextra -fsanitize=address -g main.c $(NAME) -o sort
 	@echo "$(RED)fsanitize sort created"
+
+valg:
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt
