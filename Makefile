@@ -61,11 +61,14 @@ run:
 	@echo "$(RED)sort created"
 
 runlib:
+	make
 	@gcc main.c $(NAME) $(LIBFT) -o sort
 	@echo "$(RED)sort created"
 
 runfs:
+	make
 	@gcc -Wall -Werror -Wextra -fsanitize=address -g main.c $(NAME) -o sort
+	clear
 	@echo "$(RED)fsanitize sort created"
 
 valg:

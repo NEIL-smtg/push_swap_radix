@@ -47,6 +47,7 @@ void	ft_clear_stack(t_stack **stack);
 void	ft_sort(t_stack **a, t_stack **b);
 void	stack_add_front(t_stack **s, t_stack *add);
 void	stack_add_back(t_stack **s, t_stack *new);
+t_stack	*get_mid_stk(t_stack *s);
 
 //rules
 void	sa(t_stack **a, int print);

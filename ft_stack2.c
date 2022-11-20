@@ -12,6 +12,18 @@
 
 #include "push_swap.h"
 
+t_stack	*get_mid_stk(t_stack *s)
+{
+	int	stk_size;
+	int	i;
+
+	stk_size = get_stack_size(s) / 2;
+	i = -1;
+	while (++i < stk_size)
+		s = s->next;
+	return (s);
+}
+
 void	init_stack(t_stack *s)
 {
 	s->cost = 0;
