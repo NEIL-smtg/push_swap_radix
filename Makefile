@@ -45,12 +45,13 @@ norm:
 clean:
 	rm -rf $(OBJS)
 
-# cd $(LIBFT_DIR) && $(MAKE) fclean
 fclean: clean
 	rm -rf $(OBJS_DIR)
 	rm -rf $(NAME)
+	cd $(LIBFT_DIR) && $(MAKE) fclean
 	clear
 	@echo "removed .o .a files"
+
 
 re : fclean all
 
