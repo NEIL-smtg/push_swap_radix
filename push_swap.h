@@ -34,7 +34,7 @@ void	exit_now(void);
 //valid arguments
 t_stack	*ft_check_valid(int ac, char **av);
 int		ft_is_nb(char *s);
-long	ft_atol(char *str);
+long	my_atoi(char *str);
 int		ft_is_sign(char c);
 int		ft_is_nb(char *s);
 

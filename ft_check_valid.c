@@ -23,23 +23,19 @@ int	check_range(long num)
 	return (num >= -2147483648 && num <= 2147483647);
 }
 
-int	check_dup(t_stack **a, int num)
+int	check_dup(t_stack **a)
 {
+	int		ans;
 	t_stack	*tmp;
 
-	if (!a || !*a)
-		return (0);
+	ans = 0;
 	tmp = (*a);
 	while (tmp)
 	{
-		if (num == tmp->data)
-		{
-			ft_clear_stack(a);
-			exit_now();
-		}
+		ans ^= tmp->data;
 		tmp = tmp->next;
 	}
-	return (0);
+	return (ans);
 }
 
 t_stack	*more_than_2av(char **av)
@@ -52,7 +48,7 @@ t_stack	*more_than_2av(char **av)
 	s = NULL;
 	while (av[++i])
 	{
-		num = ft_atol(av[i]);
+		num = my_atoi(av[i]);
 		if (!ft_is_nb(av[i]) || !check_range(num) || check_dup(&s, num))
 			exit_now();
 		stack_add_back(&s, ft_newstack(num));
@@ -74,7 +70,7 @@ t_stack	*ft_check_valid(int ac, char **av)
 	{
 		if (ft_is_nb(&av[1][i]))
 		{
-			num = ft_atol(&av[1][i]);
+			num = my_atoi(&av[1][i]);
 			if (!check_range(num) || check_dup(&s, num))
 				exit_now();
 			stack_add_back(&s, ft_newstack(num));

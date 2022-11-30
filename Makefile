@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 SRC_FILES	= main utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
-			  ft_atol ft_check_valid ft_stack ft_stack2 ft_sort5
+			  my_atoi ft_check_valid ft_stack ft_stack2 ft_sort5
 LIBFT_DIR	= Libft/
 LIBFT		= libft.a
 OBJS_DIR	= objs/
@@ -62,12 +62,12 @@ run:
 
 runlib:
 	make
-	@gcc main.c $(NAME) $(LIBFT) -o sort
+	@gcc main.c $(NAME) $(LIBFT) -o push_swap
 	@echo "$(RED)sort created"
 
 runfs:
 	make
-	@gcc -Wall -Werror -Wextra -fsanitize=address -g main.c $(NAME) -o sort
+	@gcc -Wall -Werror -Wextra -fsanitize=address -g main.c $(NAME) -o push_swap
 	clear
 	@echo "$(RED)fsanitize sort created"
 
