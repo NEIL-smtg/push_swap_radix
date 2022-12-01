@@ -37,13 +37,15 @@ void	first_random_push(t_stack **a, t_stack **b)
 	int	stk_size;
 
 	stk_size = get_stack_size(*a);
-	pb(a, b);
-	pb(a, b);
 	if (stk_size <= 5)
 	{
+		pb(a, b);
+		pb(a, b);
 		ft_sort3(a, TYPE_A);
 		ft_sort5(a, b);
 	}
+	else
+		ft_sort_infinity(a, b);
 }
 
 void	start_sorting(t_stack **a, t_stack **b)

@@ -24,11 +24,6 @@ t_stack	*get_mid_stk(t_stack *s)
 	return (s);
 }
 
-void	init_stack(t_stack *s)
-{
-	s->cost = 0;
-}
-
 void	stack_add_front(t_stack **s, t_stack *add)
 {
 	if (!s || !*s)

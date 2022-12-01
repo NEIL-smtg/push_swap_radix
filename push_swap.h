@@ -21,7 +21,7 @@
 typedef struct s_stack
 {
 	int				data;
-	int				cost;
+	int				sign;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -37,10 +37,13 @@ int		ft_is_nb(char *s);
 long	my_atoi(char *str);
 int		ft_is_sign(char c);
 int		ft_is_nb(char *s);
+void	exit_now(void);
+int		check_range(long num);
+int		check_dup(t_stack **a, int num);
+
 
 //stack
-void	init_stack(t_stack *s);
-t_stack	*ft_newstack(int data);
+t_stack	*ft_newstack(int data, int sign);
 t_stack	*get_last_elem(t_stack *stack);
 int		get_stack_size(t_stack *stack);
 void	ft_clear_stack(t_stack **stack);
@@ -70,5 +73,8 @@ void	ft_sort3(t_stack **s, int type);
 
 //sort5
 void	ft_sort5(t_stack **a, t_stack **b);
+
+//sort 100
+void	ft_sort_infinity(t_stack **a, t_stack **b);
 
 #endif

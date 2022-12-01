@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_newstack(int data)
+t_stack	*ft_newstack(int data, int sign)
 {
 	t_stack	*new;
 
@@ -21,6 +21,7 @@ t_stack	*ft_newstack(int data)
 		return (NULL);
 	new->data = data;
 	new->next = NULL;
+	new->sign = sign;
 	return (new);
 }
 

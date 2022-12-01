@@ -32,7 +32,7 @@ long	my_atoi(char *str)
 	while (ft_isdigit(str[i]))
 	{
 		if (j > 10)
-			break ;
+			exit_now();
 		total = total * 10 + str[i++] - '0';
 		j++;
 	}

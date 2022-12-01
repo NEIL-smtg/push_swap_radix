@@ -47,7 +47,7 @@ void	pa(t_stack **a, t_stack **b)
 
 	if (!b && !*b)
 		return ;
-	stack_add_front(a, ft_newstack((*b)->data));
+	stack_add_front(a, ft_newstack((*b)->data, (*b)->sign));
 	tmp = (*b)->next;
 	free(*b);
 	*b = NULL;
@@ -61,7 +61,7 @@ void	pb(t_stack **a, t_stack **b)
 
 	if (!a && !*a)
 		return ;
-	stack_add_front(b, ft_newstack((*a)->data));
+	stack_add_front(b, ft_newstack((*a)->data, (*a)->sign));
 	tmp = (*a)->next;
 	free(*a);
 	*a = NULL;

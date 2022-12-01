@@ -11,7 +11,8 @@
 # **************************************************************************** #
 
 SRC_FILES	= main utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
-			  my_atoi ft_check_valid ft_stack ft_stack2 ft_sort5
+			  my_atoi ft_check_valid ft_check_valid_utils ft_stack ft_stack2 ft_sort5 \
+			  ft_sort_infinity
 LIBFT_DIR	= Libft/
 LIBFT		= libft.a
 OBJS_DIR	= objs/
@@ -74,3 +75,6 @@ runfs:
 
 valg:
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt
+
+tester:
+	cd push_swap_tester && bash basic_test.sh

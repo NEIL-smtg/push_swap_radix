@@ -12,75 +12,54 @@
 
 #include "push_swap.h"
 
-void	exit_now(void)
+int	good_str(char *s)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	while (s[i] && ft_is_nb(&s[i]))
+		i++;
+	if (!s[i])
+		return (1);
+	return (0);
 }
 
-int	check_range(long num)
+int	is_positive(long nb)
 {
-	return (num >= -2147483648 && num <= 2147483647);
-}
-
-int	check_dup(t_stack **a)
-{
-	int		ans;
-	t_stack	*tmp;
-
-	ans = 0;
-	tmp = (*a);
-	while (tmp)
-	{
-		ans ^= tmp->data;
-		tmp = tmp->next;
-	}
-	return (ans);
+	if (nb >= 0)
+		return (1);
+	return (-1);
 }
 
 t_stack	*more_than_2av(char **av)
 {
-	t_stack	*s;
-	int		i;
 	long	num;
+	int		i;
+	t_stack	*s;
 
 	i = 0;
 	s = NULL;
 	while (av[++i])
 	{
 		num = my_atoi(av[i]);
-		if (!ft_is_nb(av[i]) || !check_range(num) || check_dup(&s, num))
+		if (!good_str(av[i]) || !check_range(num) || check_dup(&s, num))
+		{
+			ft_clear_stack(&s);
 			exit_now();
-		stack_add_back(&s, ft_newstack(num));
+		}
+		stack_add_back(&s, ft_newstack(num, is_positive(num)));
+	}
+	if (get_stack_size(s) <= 1)
+	{
+		ft_clear_stack(&s);
+		exit_now();
 	}
 	return (s);
 }
 
 t_stack	*ft_check_valid(int ac, char **av)
 {
-	int		i;
-	long	num;
-	t_stack	*s;
-
-	i = 0;
-	s = NULL;
-	if (ac > 2)
+	if (ac >= 2)
 		return (more_than_2av(av));
-	while (av[1][i])
-	{
-		if (ft_is_nb(&av[1][i]))
-		{
-			num = my_atoi(&av[1][i]);
-			if (!check_range(num) || check_dup(&s, num))
-				exit_now();
-			stack_add_back(&s, ft_newstack(num));
-			while (ft_is_nb(&av[1][i]))
-				i++;
-		}
-		else
-			i++;
-	}
-	if (!s->next)
-		exit_now();
-	return (s);
+	return (NULL);
 }
