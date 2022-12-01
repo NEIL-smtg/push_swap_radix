@@ -6,7 +6,7 @@
 /*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:48:36 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/02 00:55:42 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/02 01:50:03 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	radix_sort(t_stack **a, t_stack **b)
 				pb(a, b);
 		}
 		push_back(a, b);
+		size = get_stack_size(*a);
 	}
 }
 
