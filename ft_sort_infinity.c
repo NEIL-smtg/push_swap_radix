@@ -3,39 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_infinity.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:48:36 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/01 18:51:35 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:55:42 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_negative(t_stack **a, t_stack **b)
+int	contain_positive(t_stack *s)
 {
-	int	size;
-	int	i;
+	t_stack	*tmp;
 
-	size = get_stack_size(a);
-	i = -1;
-	while (++i < size)
+	tmp = s;
+	while (tmp)
 	{
-		if ((*a)->data < 0)
-			pb(a, b);
+		if (tmp->data >= 0)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+void	push_back(t_stack **a, t_stack **b)
+{
+	while (contain_positive(*b))
+	{
+		if ((*b)->data < 0)
+			rb(b, PRINT);
 		else
-			ra(a, 0);
+			pa(a, b);
 	}
 }
 
-void	ft_sort_infinity(t_stack **a, t_stack **b)
+void	radix_sort(t_stack **a, t_stack **b)
 {
 	int	i;
 	int	j;
 	int	size;
-	int	num;
 
-	push_negative(a, b);
 	size = get_stack_size(*a);
 	i = -1;
 	while (!check_sort(a))
@@ -44,12 +51,19 @@ void	ft_sort_infinity(t_stack **a, t_stack **b)
 		j = -1;
 		while (++j < size)
 		{
-			if (((*a)->data >> i) & 1)
+			if ((*a)->data < 0)
+				pb(a, b);
+			else if (((*a)->data >> i) & 1)
 				ra(a, PRINT);
 			else
 				pb(a, b);
 		}
-		while (*b)
-			pa(a, b);
+		push_back(a, b);
 	}
+}
+
+void	ft_sort_infinity(t_stack **a, t_stack **b)
+{
+	radix_sort(a, b);
+	sort_negative(a, b);
 }

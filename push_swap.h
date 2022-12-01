@@ -76,5 +76,6 @@ void	ft_sort5(t_stack **a, t_stack **b);
 
 //sort 100
 void	ft_sort_infinity(t_stack **a, t_stack **b);
+void	sort_negative(t_stack **a, t_stack **b);
 
 #endif
