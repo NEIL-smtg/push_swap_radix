@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "Libft/libft.h"
+# include "../Libft/libft.h"
 # define PRINT 1
 # define TYPE_A 1
 # define TYPE_B 2
@@ -57,6 +57,7 @@ t_stack	*get_mid_stk(t_stack *s);
 //rules
 void	sa(t_stack **a, int print);
 void	sb(t_stack **b, int print);
+void	ss(t_stack **a, t_stack **b);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
 void	ra(t_stack **a, int print);
