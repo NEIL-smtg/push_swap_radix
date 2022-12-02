@@ -21,7 +21,7 @@
 typedef struct s_stack
 {
 	int				data;
-	int				sign;
+	int				t_data;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -41,9 +41,11 @@ void	exit_now(void);
 int		check_range(long num);
 int		check_dup(t_stack **a, int num);
 
+//normalized
+void	normalize97(t_stack **a);
 
 //stack
-t_stack	*ft_newstack(int data, int sign);
+t_stack	*ft_newstack(int data, int t_data);
 t_stack	*get_last_elem(t_stack *stack);
 int		get_stack_size(t_stack *stack);
 void	ft_clear_stack(t_stack **stack);
@@ -76,6 +78,5 @@ void	ft_sort5(t_stack **a, t_stack **b);
 
 //sort 100
 void	ft_sort_infinity(t_stack **a, t_stack **b);
-void	sort_negative(t_stack **a, t_stack **b);
 
 #endif

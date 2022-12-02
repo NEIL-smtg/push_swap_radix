@@ -12,7 +12,15 @@
 
 SRC_FILES	= main utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
 			  my_atoi ft_check_valid ft_check_valid_utils ft_stack ft_stack2 ft_sort5 \
-			  ft_sort_infinity ft_sort_infinity_utils
+			  ft_sort_infinity normalize97
+SRC_NMAIN	= utils.c op_rotate.c op_swap_push.c op_reverse_rotate.c ft_sort.c ft_sort3.c \
+			  my_atoi.c ft_check_valid.c ft_check_valid_utils.c ft_stack.c ft_stack2.c ft_sort5.c \
+			  ft_sort_infinity.c normalize97.c
+BONUS_o2	= $(SRC_NMAIN:.c=.o)
+BONUS_DIR	= bonus/
+BONUS_FILES = bonus/main.c
+BONUS_o		= $(BONUS_FILES:.c=.o)
+BONUS_LIB	= checker
 LIBFT_DIR	= Libft/
 LIBFT		= libft.a
 OBJS_DIR	= objs/
@@ -23,6 +31,7 @@ RED			:= $(shell tput -Txterm setaf 1)
 RESET		:= $(shell tput -Txterm sgr0)
 SRC			= $(addsuffix .c, $(SRC_FILES))
 OBJS		= $(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
+FS			= -fsanitize=address -g
 
 all: $(LIBFT_DIR)$(LIBFT)
 	mkdir -p $(OBJS_DIR)
@@ -39,6 +48,12 @@ $(NAME): $(OBJS)
 
 $(LIBFT_DIR)$(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+
+rere:
+	$(CC) $(CFLAGS) $(FS) $(SRC_NMAIN) $(BONUS_FILES) $(LIBFT_DIR)$(LIBFT) -o checker
+
+fcleanb:
+	rm -rf $(BONUS_o2)
 
 norm:
 	norminette -R CheckForbiddenSourceHeader $(SRC)

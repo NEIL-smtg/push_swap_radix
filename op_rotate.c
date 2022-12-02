@@ -6,7 +6,7 @@
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 00:49:08 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/01 18:03:06 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/02 15:49:15 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ra(t_stack **a, int print)
 {
 	t_stack	*head;
 
-	stack_add_back(a, ft_newstack((*a)->data, (*a)->sign));
+	stack_add_back(a, ft_newstack((*a)->data, (*a)->t_data));
 	head = (*a)->next;
 	free(*a);
 	*a = NULL;
@@ -29,7 +29,7 @@ void	rb(t_stack **b, int print)
 {
 	t_stack	*head;
 
-	stack_add_back(b, ft_newstack((*b)->data, (*b)->sign));
+	stack_add_back(b, ft_newstack((*b)->data, (*b)->t_data));
 	head = (*b)->next;
 	free(*b);
 	*b = NULL;

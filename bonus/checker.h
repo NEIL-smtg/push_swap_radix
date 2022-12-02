@@ -1,42 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_infinity.c                                 :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 13:48:36 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/02 15:51:10 by suchua           ###   ########.fr       */
+/*   Created: 2022/12/02 13:19:24 by suchua            #+#    #+#             */
+/*   Updated: 2022/12/02 13:35:31 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-void	radix_sort(t_stack **a, t_stack **b)
-{
-	int	i;
-	int	j;
-	int	size;
+# include "../Libft/libft.h"
+# include "../push_swap.h"
+# define STDIN 0
 
-	size = get_stack_size(*a);
-	i = -1;
-	while (!check_sort(a))
-	{
-		j = -1;
-		++i;
-		while (++j < size)
-		{
-			if (((*a)->t_data >> i) & 1)
-				ra(a, PRINT);
-			else
-				pb(a, b);
-		}
-		while (*b)
-			pa(a, b);
-	}
-}
-
-void	ft_sort_infinity(t_stack **a, t_stack **b)
-{
-	radix_sort(a, b);
-}
+#endif
