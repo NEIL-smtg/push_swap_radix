@@ -14,9 +14,10 @@ SRC_DIR		= srcs/
 SRC			= main utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
 			  my_atoi ft_check_valid ft_check_valid_utils ft_stack ft_stack2 ft_sort5 \
 			  ft_sort_infinity normalize97
-SRC_N_MAIN	= utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
+BONUS_SRC1	= utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
 			  my_atoi ft_check_valid ft_check_valid_utils ft_stack ft_stack2 ft_sort5 \
 			  ft_sort_infinity normalize97
+BONUS_SRC2	= main.c
 SRCS_N_MAIN	= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_N_MAIN)))
 HEADER		= $(SRC_DIR)push_swap.h 
 SRCS		= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC)))
@@ -25,9 +26,6 @@ OBJS		= $(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC)))
 LIBFT_DIR	= Libft
 LIBFT		= libft.a
 NAME		= push_swap.a
-BONUS_DIR	= bonus/
-BONUS_SRC	= main
-BONUS_SRCS	= $(addprefix $(BONUS_DIR), $(addsuffix .c, $(BONUS_SRC)))
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 RED			:= $(shell tput -Txterm setaf 1)
@@ -37,15 +35,16 @@ all:
 	mkdir -p $(OBJS_DIR)
 	make do
 
-$(OBJS_DIR)%.o: $(SRCS)
+$(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 do: $(NAME)
 
 $(NAME) : $(LIBFT_DIR)/$(LIBFT) $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+	touch $(NAME)
 	cp $(LIBFT_DIR)/$(LIBFT) .
 	mv $(LIBFT) $(NAME)
+	ar -crs $(NAME) $(OBJS)
 	make run
 	clear
 	@echo "$(RED)fsanitize sort created"
@@ -72,7 +71,7 @@ run:
 	@$(CC) $(CFLAGS) -fsanitize=address -g $(SRCS) $(NAME) -o push_swap
 
 runb:
-	@$(CC)  -fsanitize=address -g $(BONUS_SRCS) $(SRCS_N_MAIN) $(NAME) -o checker
+	@$(CC) $(CFLAGS) -fsanitize=address -g $(BONUS_DIR)main.c $(BONUS_NAME) -o checker
 
 valg:
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt
