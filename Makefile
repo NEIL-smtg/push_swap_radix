@@ -30,6 +30,9 @@ CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 RED			:= $(shell tput -Txterm setaf 1)
 RESET		:= $(shell tput -Txterm sgr0)
+BONUS_DIR	= bonus/
+BONUS_SRC	= main
+BONUS_SRCS	= $(addprefix $(BONUS_DIR), $(addsuffix .c, $(BONUS_SRC)))
 
 all:
 	mkdir -p $(OBJS_DIR)
@@ -71,7 +74,7 @@ run:
 	@$(CC) $(CFLAGS) -fsanitize=address -g $(SRCS) $(NAME) -o push_swap
 
 runb:
-	@$(CC) $(CFLAGS) -fsanitize=address -g $(BONUS_DIR)main.c $(BONUS_NAME) -o checker
+	@$(CC) $(CFLAGS) -fsanitize=address -g $(BONUS_SRCS) $(SRCS_N_MAIN) $(NAME) -o checker
 
 valg:
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt
