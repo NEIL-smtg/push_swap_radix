@@ -39,8 +39,8 @@ void	first_random_push(t_stack **a, t_stack **b)
 	stk_size = get_stack_size(*a);
 	if (stk_size <= 5)
 	{
-		pb(a, b);
-		pb(a, b);
+		pb(a, b, PRINT);
+		pb(a, b, PRINT);
 		ft_sort3(a, TYPE_A);
 		ft_sort5(a, b);
 	}

@@ -22,11 +22,11 @@ void	start_from_bottom(t_stack **a, t_stack **b)
 		rra(a, PRINT);
 		n++;
 	}
-	pa(a, b);
+	pa(a, b, PRINT);
 	n++;
 	if ((*b) && (*b)->data > get_last_elem(*a)->data && (*a)->data > (*b)->data)
 	{
-		pa(a, b);
+		pa(a, b, PRINT);
 		n++;
 	}
 	while (n--)
@@ -43,7 +43,7 @@ void	start_from_top(t_stack **a, t_stack **b)
 		ra(a, PRINT);
 		n++;
 	}
-	pa(a, b);
+	pa(a, b, PRINT);
 	while (n--)
 		rra(a, PRINT);
 }
@@ -64,13 +64,13 @@ int	ft_handle_bnext(t_stack **a, t_stack **b, t_stack *last)
 	if (bnext->data < (*a)->data)
 	{
 		sb(b, PRINT);
-		pa(a, b);
+		pa(a, b, PRINT);
 		return (1);
 	}
 	else if (bnext->data > last->data)
 	{
 		sb(b, PRINT);
-		pa(a, b);
+		pa(a, b, PRINT);
 		ra(a, PRINT);
 		return (1);
 	}
@@ -86,11 +86,11 @@ void	ft_sort5(t_stack **a, t_stack **b)
 		last = get_last_elem(*a);
 		if ((*b)->data > last->data)
 		{
-			pa(a, b);
+			pa(a, b, PRINT);
 			ra(a, PRINT);
 		}
 		else if ((*b)->data < (*a)->data)
-			pa(a, b);
+			pa(a, b, PRINT);
 		else if ((*b)->next && !ft_handle_bnext(a, b, last))
 			ft_push_somewhere(a, b);
 		else

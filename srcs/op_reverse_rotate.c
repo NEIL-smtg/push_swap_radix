@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 00:49:18 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/02 15:48:15 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/04 00:33:25 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void	rrb(t_stack **b, int print)
 		ft_putendl_fd("rra", 1);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, int print)
 {
 	rra(a, 0);
 	rrb(b, 0);
-	ft_putendl_fd("rrr", 1);
+	if (print)
+		ft_putendl_fd("rrr", 1);
 }

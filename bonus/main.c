@@ -6,7 +6,7 @@
 /*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:18:30 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/03 02:25:40 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/04 00:40:03 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	check_ops(char *op, t_stack **a, t_stack **b)
 void	do_ops(char *op, t_stack **a, t_stack **b)
 {
 	if (!ft_strncmp(op, "pa", 2) && *b)
-		pa(a, b);
+		pa(a, b, 0);
 	else if (!ft_strncmp(op, "pb", 2) && *a)
-		pb(a, b);
+		pb(a, b, 0);
 	else if (!ft_strncmp(op, "rra", 3) && *a)
 		rra(a, 0);
 	else if (!ft_strncmp(op, "rrb", 3) && *b)
@@ -92,7 +92,7 @@ void	do_ops(char *op, t_stack **a, t_stack **b)
 	else if (!ft_strncmp(op, "rrr", 3))
 	{
 		if (*a && *b)
-			rrr(a, b);
+			rrr(a, b, 0);
 		else if (*a)
 			rra(a, 0);
 		else if (*b)
@@ -105,7 +105,7 @@ void	do_ops(char *op, t_stack **a, t_stack **b)
 	else if (!ft_strncmp(op, "rr", 2))
 	{
 		if (*a && *b)
-			rr(a, b);
+			rr(a, b, 0);
 		else if (*a)
 			ra(a, 0);
 		else if (*b)
@@ -118,7 +118,7 @@ void	do_ops(char *op, t_stack **a, t_stack **b)
 	else if (!ft_strncmp(op, "ss", 2))
 	{
 		if (get_stack_size(*a) >= 2 && get_stack_size(*b) >= 2)
-			ss(a, b);
+			ss(a, b, 0);
 		else if (get_stack_size(*a) >= 2)
 			sa(a, 0);
 		else if (get_stack_size(*b) >= 2)

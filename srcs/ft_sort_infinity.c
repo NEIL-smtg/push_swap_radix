@@ -6,7 +6,7 @@
 /*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:48:36 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/02 19:42:21 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/04 00:37:15 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	radix_sort(t_stack **a, t_stack **b)
 			if (((*a)->t_data >> i) & 1)
 				ra(a, PRINT);
 			else
-				pb(a, b);
+				pb(a, b, PRINT);
 		}
 		while (*b)
-			pa(a, b);
+			pa(a, b, PRINT);
 	}
 }
 

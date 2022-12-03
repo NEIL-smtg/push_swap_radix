@@ -34,14 +34,15 @@ void	sb(t_stack **b, int print)
 		ft_putendl_fd("sb", 1);
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, int print)
 {
 	sa(a, 0);
 	sb(b, 0);
-	ft_putendl_fd("ss", 1);
+	if (print)
+		ft_putendl_fd("ss", 1);
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, int print)
 {
 	t_stack	*tmp;
 
@@ -52,10 +53,11 @@ void	pa(t_stack **a, t_stack **b)
 	free(*b);
 	*b = NULL;
 	*b = tmp;
-	ft_putendl_fd("pa", 1);
+	if (print)
+		ft_putendl_fd("pa", 1);
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b, int print)
 {
 	t_stack	*tmp;
 
@@ -66,5 +68,6 @@ void	pb(t_stack **a, t_stack **b)
 	free(*a);
 	*a = NULL;
 	*a = tmp;
-	ft_putendl_fd("pb", 1);
+	if (print)
+		ft_putendl_fd("pb", 1);
 }
