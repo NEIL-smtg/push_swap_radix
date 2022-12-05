@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normalize97.c                                      :+:      :+:    :+:   */
+/*   result.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 15:06:27 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/05 17:17:41 by suchua           ###   ########.fr       */
+/*   Created: 2022/12/05 15:30:34 by suchua            #+#    #+#             */
+/*   Updated: 2022/12/05 15:40:33 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	set_tdata(t_stack **a, int num)
+void	print_ko(void)
 {
-	t_stack	*tmp;
-	int		i;
-
-	tmp = *a;
-	i = 0;
-	while (tmp->data != num)
-	{
-		if (tmp->data > num)
-			tmp->t_data++;
-		else
-			i++;
-		tmp = tmp->next;
-	}
-	tmp->t_data = i;
+	ft_putendl_fd("KO", 1);
 }
 
-void	normalize97(t_stack **a)
+void	print_ok(void)
 {
-	t_stack	*tmp;
+	ft_putendl_fd("OK", 1);
+}
 
-	tmp = (*a);
-	while (tmp)
-	{
-		set_tdata(a, tmp->data);
-		tmp = tmp->next;
-	}
+void	show_result(t_stack **a, t_stack **b)
+{
+	if (*b || !check_sort(a))
+		print_ko();
+	else
+		print_ok();
 }

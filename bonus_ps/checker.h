@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normalize97.c                                      :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 15:06:27 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/05 17:17:41 by suchua           ###   ########.fr       */
+/*   Created: 2022/12/02 13:19:24 by suchua            #+#    #+#             */
+/*   Updated: 2022/12/05 15:47:15 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-void	set_tdata(t_stack **a, int num)
-{
-	t_stack	*tmp;
-	int		i;
+# include "../Libft/libft.h"
+# include "../srcs/push_swap.h"
+# define STDIN 0
 
-	tmp = *a;
-	i = 0;
-	while (tmp->data != num)
-	{
-		if (tmp->data > num)
-			tmp->t_data++;
-		else
-			i++;
-		tmp = tmp->next;
-	}
-	tmp->t_data = i;
-}
+//everthing about ops
+void	check_ops(char *op, t_stack **a, t_stack **b);
+void	do_ops(char *op, t_stack **a, t_stack **b);
 
-void	normalize97(t_stack **a)
-{
-	t_stack	*tmp;
+//show result KO OK
+void	show_result(t_stack **a, t_stack **b);
 
-	tmp = (*a);
-	while (tmp)
-	{
-		set_tdata(a, tmp->data);
-		tmp = tmp->next;
-	}
-}
+void	free_everything(char *ops, t_stack **a, t_stack **b);
+
+#endif

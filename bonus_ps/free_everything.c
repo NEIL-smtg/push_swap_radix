@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   free_everything.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 13:19:24 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/03 23:37:40 by suchua           ###   ########.fr       */
+/*   Created: 2022/12/05 15:46:47 by suchua            #+#    #+#             */
+/*   Updated: 2022/12/05 15:47:09 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "checker.h"
 
-# include "../Libft/libft.h"
-# include "../srcs/push_swap.h"
-# define STDIN 0
-
-#endif
+void	free_everything(char *ops, t_stack **a, t_stack **b)
+{
+	free(ops);
+	ft_clear_stack(a);
+	ft_clear_stack(b);
+	ops = NULL;
+	exit_now();
+}

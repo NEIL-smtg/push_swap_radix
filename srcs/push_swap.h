@@ -31,6 +31,8 @@ void	print_stack(t_stack *a, t_stack *b);
 //exit
 void	exit_now(void);
 
+int	check_sort2(t_stack **a, t_stack **b);
+
 //valid arguments
 t_stack	*ft_check_valid(int ac, char **av);
 int		ft_is_nb(char *s);

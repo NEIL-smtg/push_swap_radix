@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_infinity.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:48:36 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/04 00:37:15 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/05 20:24:34 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	optimise_radix97(t_stack **a, t_stack **b, int bit)
+{
+	int	size;
+	int	i;
+
+	i = -1;
+	size = get_stack_size(*b);
+	while (++i < size)
+	{
+		if (((*b)->t_data >> bit) & 1)
+			pa(a, b, PRINT);
+		else
+			rb(b, PRINT);
+	}
+}
 
 void	radix_sort(t_stack **a, t_stack **b)
 {
@@ -18,8 +34,8 @@ void	radix_sort(t_stack **a, t_stack **b)
 	int	j;
 	int	size;
 
-	size = get_stack_size(*a);
 	i = -1;
+	size = get_stack_size(*a);
 	while (!check_sort(a))
 	{
 		j = -1;
@@ -31,9 +47,11 @@ void	radix_sort(t_stack **a, t_stack **b)
 			else
 				pb(a, b, PRINT);
 		}
-		while (*b)
-			pa(a, b, PRINT);
+		optimise_radix97(a, b, i + 1);
+		size = get_stack_size(*a);
 	}
+	while (*b)
+		pa(a, b, PRINT);
 }
 
 void	ft_sort_infinity(t_stack **a, t_stack **b)

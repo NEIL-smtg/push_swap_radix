@@ -17,8 +17,8 @@ SRC			= main utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
 BONUS_SRC1	= utils op_rotate op_swap_push op_reverse_rotate ft_sort ft_sort3 \
 			  my_atoi ft_check_valid ft_check_valid_utils ft_stack ft_stack2 ft_sort5 \
 			  ft_sort_infinity normalize97
-BONUS_SRC2	= main.c
-SRCS_N_MAIN	= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_N_MAIN)))
+BONUS_SRC2	= main check_ops do_ops result free_everything
+SRCS_N_MAIN	= $(addprefix $(SRC_DIR), $(addsuffix .c, $(BONUS_SRC1)))
 HEADER		= $(SRC_DIR)push_swap.h 
 SRCS		= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC)))
 OBJS_DIR	= objs/
@@ -30,9 +30,9 @@ CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 RED			:= $(shell tput -Txterm setaf 1)
 RESET		:= $(shell tput -Txterm sgr0)
-BONUS_DIR	= bonus/
+BONUS_DIR	= bonus_ps/
 BONUS_SRC	= main
-BONUS_SRCS	= $(addprefix $(BONUS_DIR), $(addsuffix .c, $(BONUS_SRC)))
+BONUS_SRCS	= $(addprefix $(BONUS_DIR), $(addsuffix .c, $(BONUS_SRC2)))
 
 all:
 	mkdir -p $(OBJS_DIR)
@@ -59,7 +59,7 @@ del:
 	rm $(NAME)
 
 norm:
-	norminette -R CheckForbiddenSourceHeader $(SRCS)
+	norminette -R CheckForbiddenSourceHeader $(SRCS) $(BONUS_SRCS)
 
 clean:
 	rm -rf $(OBJS_DIR)
@@ -73,11 +73,8 @@ fclean: clean
 run:
 	@$(CC) $(CFLAGS) -fsanitize=address -g $(SRCS) $(NAME) -o push_swap
 
-runb:
-	@$(CC) $(CFLAGS) -fsanitize=address -g $(BONUS_SRCS) $(SRCS_N_MAIN) $(NAME) -o checker
-
-valg:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt
+bonus: all
+	@$(CC) $(CFLAGS) $(BONUS_SRCS) $(SRCS_N_MAIN) $(LIBFT_DIR)/$(LIBFT) -o checker
 
 tester:
 	cd push_swap_tester && bash basic_test.sh
