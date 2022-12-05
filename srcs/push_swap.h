@@ -22,6 +22,7 @@ typedef struct s_stack
 {
 	int				data;
 	int				t_data;
+	int				flag;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -30,8 +31,6 @@ void	print_stack(t_stack *a, t_stack *b);
 
 //exit
 void	exit_now(void);
-
-int	check_sort2(t_stack **a, t_stack **b);
 
 //valid arguments
 t_stack	*ft_check_valid(int ac, char **av);
@@ -42,6 +41,7 @@ int		ft_is_nb(char *s);
 void	exit_now(void);
 int		check_range(long num);
 int		check_dup(t_stack **a, int num);
+int		good_str(char *s);
 
 //normalized
 void	normalize97(t_stack **a);
@@ -55,6 +55,7 @@ void	ft_sort(t_stack **a, t_stack **b);
 void	stack_add_front(t_stack **s, t_stack *add);
 void	stack_add_back(t_stack **s, t_stack *new);
 t_stack	*get_mid_stk(t_stack *s);
+void	init_flag(t_stack **s);
 
 //rules
 void	sa(t_stack **a, int print);

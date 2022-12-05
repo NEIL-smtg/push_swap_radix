@@ -12,6 +12,18 @@
 
 #include "push_swap.h"
 
+void	init_flag(t_stack **s)
+{
+	t_stack	*tmp;
+
+	tmp = *s;
+	while (tmp)
+	{
+		tmp->flag = 0;
+		tmp = tmp->next;
+	}
+}
+
 t_stack	*ft_newstack(int data, int t_data)
 {
 	t_stack	*new;

@@ -75,6 +75,8 @@ run:
 
 bonus: all
 	@$(CC) $(CFLAGS) $(BONUS_SRCS) $(SRCS_N_MAIN) $(LIBFT_DIR)/$(LIBFT) -o checker
+	clear
+	@echo "cheker file created"
 
 tester:
 	cd push_swap_tester && bash basic_test.sh
