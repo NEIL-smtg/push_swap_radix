@@ -71,7 +71,7 @@ fclean: clean
 	@echo "removed .o .a files"
 
 run:
-	@$(CC) $(CFLAGS) -fsanitize=address -g $(SRCS) $(NAME) -o push_swap
+	@$(CC) $(CFLAGS) $(SRCS) $(NAME) -o push_swap
 
 bonus: all
 	@$(CC) $(CFLAGS) $(BONUS_SRCS) $(SRCS_N_MAIN) $(LIBFT_DIR)/$(LIBFT) -o checker

@@ -6,11 +6,22 @@
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:09:58 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/01 13:11:18 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/06 19:03:26 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	clear_and_exit(t_stack *s)
+{
+	ft_clear_stack(&s);
+	exit_now();
+}
+
+int	ft_isspace(char ch)
+{
+	return ((ch >= 9 && ch <= 13) || ch == 32);
+}
 
 void	exit_now(void)
 {

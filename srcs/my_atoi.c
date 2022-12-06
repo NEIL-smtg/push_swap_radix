@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-long	my_atoi(char *str)
+long	my_atoi(char *str, t_stack *s)
 {
 	int		sign;
 	int		i;
@@ -32,7 +32,7 @@ long	my_atoi(char *str)
 	while (ft_isdigit(str[i]))
 	{
 		if (j > 10)
-			exit_now();
+			clear_and_exit(s);
 		total = total * 10 + str[i++] - '0';
 		j++;
 	}

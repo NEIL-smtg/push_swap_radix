@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:18:30 by suchua            #+#    #+#             */
-/*   Updated: 2022/12/05 23:36:55 by suchua           ###   ########.fr       */
+/*   Updated: 2022/12/06 18:32:32 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,13 @@ int	main(int ac, char **av)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (ac > 2)
+	if (ac >= 2)
 	{
 		stack_a = ft_check_valid(ac, av);
 		get_input(&stack_a, &stack_b);
 		show_result(&stack_a, &stack_b);
 		ft_clear_stack(&stack_a);
 		ft_clear_stack(&stack_b);
-	}
-	else
-	{
-		if (!av[1])
-			return (0);
-		if (!good_str(av[1]))
-			exit_now();
 	}
 	return (0);
 }

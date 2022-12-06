@@ -24,13 +24,6 @@ int	good_str(char *s)
 	return (0);
 }
 
-int	is_positive(long nb)
-{
-	if (nb >= 0)
-		return (1);
-	return (-1);
-}
-
 t_stack	*more_than_2av(char **av)
 {
 	long	num;
@@ -41,25 +34,45 @@ t_stack	*more_than_2av(char **av)
 	s = NULL;
 	while (av[++i])
 	{
-		num = my_atoi(av[i]);
+		num = my_atoi(av[i], s);
 		if (!good_str(av[i]) || !check_range(num) || check_dup(&s, num))
-		{
-			ft_clear_stack(&s);
-			exit_now();
-		}
-		stack_add_back(&s, ft_newstack(num, is_positive(num)));
+			clear_and_exit(s);
+		stack_add_back(&s, ft_newstack(num, 0));
 	}
 	if (get_stack_size(s) <= 1)
+		clear_and_exit(s);
+	return (s);
+}
+
+t_stack	*break_down_av(char *str)
+{
+	int		i;
+	long	num;
+	t_stack	*s;
+
+	i = 0;
+	s = NULL;
+	while (ft_isspace(str[i]))
+		i++;
+	while (str[i])
 	{
-		ft_clear_stack(&s);
-		exit_now();
+		num = my_atoi(&str[i], s);
+		if (!ft_is_nb(&str[i]) || check_dup(&s, num) || !check_range(num))
+			clear_and_exit(s);
+		stack_add_back(&s, ft_newstack(num, 0));
+		while (ft_is_nb(&str[i]))
+			i++;
+		while (ft_isspace(str[i]))
+			i++;
 	}
 	return (s);
 }
 
 t_stack	*ft_check_valid(int ac, char **av)
 {
-	if (ac >= 2)
+	if (ac == 2)
+		return (break_down_av(av[1]));
+	if (ac > 2)
 		return (more_than_2av(av));
 	return (NULL);
 }
